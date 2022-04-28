@@ -24,7 +24,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
             ActivityCompat.finishAffinity(this)
             exitProcess(0)
-        } 
+        }
+
+        
+
+
     }
 
 }

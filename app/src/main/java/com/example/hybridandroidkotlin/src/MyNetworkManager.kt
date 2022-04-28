@@ -1,5 +1,6 @@
 package com.example.hybridandroidkotlin.src
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
@@ -7,11 +8,12 @@ import android.os.Build
 
 class MyNetworkManager(private val context: Context) {
 
+    @SuppressLint("ObsoleteSdkInt")
     fun checkNetworkState(): Boolean {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val nw      = connectivityManager.activeNetwork ?: return false
+            val nw    = connectivityManager.activeNetwork ?: return false
             val actNw = connectivityManager.getNetworkCapabilities(nw) ?: return false
 
             return when {
@@ -28,3 +30,4 @@ class MyNetworkManager(private val context: Context) {
         }
     }
 }
+
